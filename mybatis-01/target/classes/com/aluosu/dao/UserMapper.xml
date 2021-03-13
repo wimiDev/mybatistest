@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aluosu.dao.UserMapper">
+
+  <select id="getUserList" resultType="com.aluosu.pojo.User">
+	select * from RAINSTORM.user
+  </select>
+  
+  <insert id="addUser" parameterType="com.aluosu.pojo.User" >
+  	insert into RAINSTORM.user(id, name, code, phone, email, addr) values(#{id}, #{name}, #{code}, #{phone}, #{email}, #{addr})
+  </insert>
+  
+  <insert id="addUserByMap" parameterType="java.util.Map" >
+  	insert into RAINSTORM.user(id, name, code, phone, email, addr) values(#{id}, #{name}, #{code}, #{phone}, #{email}, #{addr})
+  </insert>
+  
+  <delete id="delUser" >
+  	delete from RAINSTORM.user where id = #{id}
+  </delete>
+  
+  <update id="updateUser" parameterType="com.aluosu.pojo.User">
+  	update RAINSTORM.user set 
+  	name = #{name},
+  	code = #{code},
+  	phone = #{phone},
+  	email = #{email},
+  	addr = #{addr}
+  	where id = #{id}
+  </update>
+  
+</mapper>
