@@ -5,7 +5,7 @@
 <mapper namespace="com.aluosu.dao.UserMapper">
 
   <select id="getUserList" resultType="com.aluosu.pojo.User">
-	select * from RAINSTORM.user
+	select * from ${DATABASE}.${USER}
   </select>
   
   <insert id="addUser" parameterType="com.aluosu.pojo.User" >

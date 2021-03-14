@@ -3,18 +3,31 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <environments default="development">
-    <environment id="development">
-      <transactionManager type="JDBC"/>
-      <dataSource type="POOLED">
-        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://81.70.153.203:3306/RAINSTORM?useSSL=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8"/>
-        <property name="username" value="boy-1"/>
-        <property name="password" value="84a84-C046c"/>
-      </dataSource>
-    </environment>
-  </environments>
-  <mappers>
-    <mapper resource="com/aluosu/dao/UserMapper.xml"/>
-  </mappers>
+	<!-- 属性写在内部文件 -->
+	<!-- 
+	<properties>
+		<property name="username" value="boy-1"/>
+		<property name="pwd" value="84a84-C046c"/>
+		<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="devhost" value="81.70.153.203"/>
+		<property name="DATABASE" value="RAINSTORM"/>
+		<property name="USER" value="user"/>
+	</properties>
+	 -->
+	 
+	<properties resource="db.properties"></properties>
+	<environments default="development">
+	  <environment id="development">
+	    <transactionManager type="JDBC"/>
+	    <dataSource type="POOLED">
+	      <property name="driver" value="${driver}"/>
+	      <property name="url" value="${url}"/>
+	      <property name="username" value="${username}"/>
+	      <property name="password" value="${pwd}"/>
+	    </dataSource>
+	  </environment>
+	</environments>
+	<mappers>
+	  <mapper resource="com/aluosu/dao/UserMapper.xml"/>
+	</mappers>
 </configuration>
