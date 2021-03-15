@@ -24,10 +24,22 @@ public class UserTest {
 	}
 	
 	@Test
+	public void userLikeTest() {
+		SqlSession session = MyBatisUtil.getInstance().getSession();
+		UserMapper userDao = session.getMapper(UserMapper.class);
+		List<User> userList = userDao.getUserLike("李");
+		
+		for(User e : userList) {
+			System.out.printf("%s\n",e);
+		}
+		session.close();
+	}
+	
+	@Test
 	public void insertTest() {
 		SqlSession session = MyBatisUtil.getInstance().getSession();
 		UserMapper userMap = session.getMapper(UserMapper.class);
-		User nUser = new User(1, "暴富脱单","1001","12345678910", "1@luosu.com", "2222222");
+		User nUser = new User(5, "李飞","1005","12345678910", "5@luosu.com", "66666666666");
 		int result = userMap.addUser(nUser);
 		System.out.printf("插入一个用户 result: %d\n", result);
 		

@@ -4,24 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aluosu.dao.UserMapper">
 
-  <select id="getUserList" resultType="com.aluosu.pojo.User">
+  <select id="getUserList" resultType="User">
 	select * from ${DATABASE}.${USER}
   </select>
   
-  <insert id="addUser" parameterType="com.aluosu.pojo.User" >
-  	insert into RAINSTORM.user(id, name, code, phone, email, addr) values(#{id}, #{name}, #{code}, #{phone}, #{email}, #{addr})
+  <select id="getUserLike" resultType="User">
+	select * from ${DATABASE}.${USER} where name like concat('%', #{value}, '%')
+  </select>
+  
+  <insert id="addUser" parameterType="User" >
+  	insert into ${DATABASE}.${USER}(id, name, code, phone, email, addr) values(#{id}, #{name}, #{code}, #{phone}, #{email}, #{addr})
   </insert>
   
   <insert id="addUserByMap" parameterType="java.util.Map" >
-  	insert into RAINSTORM.user(id, name, code, phone, email, addr) values(#{id}, #{name}, #{code}, #{phone}, #{email}, #{addr})
+  	insert into ${DATABASE}.${USER}(id, name, code, phone, email, addr) values(#{id}, #{name}, #{code}, #{phone}, #{email}, #{addr})
   </insert>
   
   <delete id="delUser" >
-  	delete from RAINSTORM.user where id = #{id}
+  	delete from ${DATABASE}.${USER} where id = #{id}
   </delete>
   
-  <update id="updateUser" parameterType="com.aluosu.pojo.User">
-  	update RAINSTORM.user set 
+  <update id="updateUser" parameterType="User">
+  	update ${DATABASE}.${USER} set 
   	name = #{name},
   	code = #{code},
   	phone = #{phone},

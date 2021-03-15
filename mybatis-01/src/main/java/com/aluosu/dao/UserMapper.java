@@ -7,6 +7,8 @@ import com.aluosu.pojo.*;
 public interface UserMapper {
 	public List<User> getUserList();
 	
+	public List<User> getUserLike(String value);
+	
 	public int addUser(User user);
 	
 	public int delUser(int id);
