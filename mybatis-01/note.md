@@ -231,3 +231,49 @@ public class UserTest {
 	}
 }
 ```
+## [属性配置](https://mybatis.org/mybatis-3/zh/configuration.html#properties)
+### properties
+这些属性可以在外部进行配置，并可以进行动态替换。你既可以在典型的 Java 属性文件中配置这些属性，也可以在 properties 元素的子元素中设置。
+设置好的属性可以在整个配置文件中用来替换需要动态配置的属性值。mapper中也可以用。
+
+#### 在外部文件配置
+* 在resource目录下新建db.properties
+* 编写配置
+* 在mybatis-config.xml中添加属性标签,```xml <properties resource="db.properties"></properties> ```
+#### 在mybatis-config.xml中配置
+* 在mybatis-config.xml中添加属性标签,```xml <properties resource="db.properties"></properties> ```
+* 然后在子标签中添加属性，如附录所示
+
+附录：
+```xml
+	<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 属性写在内部文件 -->
+	<!-- 
+	<properties>
+		<property name="username" value="boy-1"/>
+		<property name="pwd" value="84a84-C046c"/>
+		<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="devhost" value="81.70.153.203"/>
+		<property name="DATABASE" value="RAINSTORM"/>
+		<property name="USER" value="user"/>
+	</properties>
+	 -->
+	
+	<properties resource="db.properties"></properties>
+	...省略了其他配置
+</configuration>
+```
+## [类型别名](https://mybatis.org/mybatis-3/zh/configuration.html#typeAliases)
+类型别名可为 Java 类型设置一个缩写名字。 它仅用于 XML 配置，意在降低冗余的全限定类名书写
+
+* 在mybatis-config.xml中添加属性标签,注意标签的顺序，mybatis对顺序是有要求的
+```xml
+<typeAliases>
+  <typeAlias alias="Author" type="domain.blog.Author"/>
+</typeAliases>
+```
+* 设置完别名之后就可以在配置文件中使用别名，而不用带复杂的全局包名。

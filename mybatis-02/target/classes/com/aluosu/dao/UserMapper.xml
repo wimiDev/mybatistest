@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aluosu.dao.UserMapper">
+
+<resultMap id="userResultMap" type="User">
+  <result property="n" column="name"/>
+</resultMap>
+
+<select id="getUserById" resultMap="userResultMap">
+	select * from ${DATABASE}.${USER} where id = #{id}
+</select>
+
+  <select id="getUserList" resultType="User">
+	select * from ${DATABASE}.${USER}
+  </select>
+  
+  <select id="getUserLike" resultType="User">
+	select * from ${DATABASE}.${USER} where name like concat('%', #{value}, '%')
+  </select>
+  
+  <insert id="addUser" parameterType="User" >
+  	insert into ${DATABASE}.${USER}(id, name, code, phone, email, addr) values(#{id}, #{name}, #{code}, #{phone}, #{email}, #{addr})
+  </insert>
+  
+  <insert id="addUserByMap" parameterType="java.util.Map" >
+  	insert into ${DATABASE}.${USER}(id, name, code, phone, email, addr) values(#{id}, #{name}, #{code}, #{phone}, #{email}, #{addr})
+  </insert>
+  
+  <delete id="delUser" >
+  	delete from ${DATABASE}.${USER} where id = #{id}
+  </delete>
+  
+  <update id="updateUser" parameterType="User">
+  	update ${DATABASE}.${USER} set 
+  	name = #{name},
+  	code = #{code},
+  	phone = #{phone},
+  	email = #{email},
+  	addr = #{addr}
+  	where id = #{id}
+  </update>
+  
+</mapper>
