@@ -22,7 +22,11 @@
 	<typeAliases>
 	  <typeAlias alias="User" type="com.aluosu.pojo.User"/>
 	</typeAliases>
-	
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+		        <property name="autoRuntimeDialect" value="true"/>
+		</plugin>
+	</plugins>
 	<environments default="development">
 	  <environment id="development">
 	    <transactionManager type="JDBC"/>
@@ -38,5 +42,4 @@
 	<mappers>
 	  <mapper resource="com/aluosu/dao/UserMapper.xml"/>
 	</mappers>
-	
 </configuration>
