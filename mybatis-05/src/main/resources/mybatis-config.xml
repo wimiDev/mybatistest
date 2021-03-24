@@ -18,6 +18,7 @@
 	<properties resource="db.properties"></properties>
 	<typeAliases>
 	  <typeAlias alias="Teacher" type="com.aluosu.pojo.Teacher"/>
+	  <typeAlias alias="Student" type="com.aluosu.pojo.Student"/>
 	</typeAliases>
 	<environments default="development">
 	  <environment id="development">
@@ -32,7 +33,7 @@
 	</environments>
 	
 	<mappers>
-	  <mapper class="com.aluosu.dao.TeacherMapper"/>
+	  <mapper resource="com/aluosu/dao/StudentMapper.xml"/>
 	</mappers>
 	
 </configuration>

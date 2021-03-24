@@ -1,5 +1,11 @@
 package com.aluosu.dao;
 
-public interface StudentMapper {
+import java.util.List;
 
+import com.aluosu.pojo.Student;
+
+public interface StudentMapper {
+	
+	public List<Student> getStudent();
+	
 }
