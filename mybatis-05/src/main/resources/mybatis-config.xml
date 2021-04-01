@@ -34,6 +34,7 @@
 	
 	<mappers>
 	  <mapper resource="com/aluosu/dao/StudentMapper.xml"/>
+	  <mapper resource="com/aluosu/dao/TeacherMapper.xml"/>
 	</mappers>
 	
 </configuration>
