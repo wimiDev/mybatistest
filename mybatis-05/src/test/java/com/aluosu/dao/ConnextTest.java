@@ -30,7 +30,7 @@ public class ConnextTest {
 		SqlSession session = MyBatisUtil.getInstance().getSession();
 		StudentMapper studentMapper = session.getMapper(StudentMapper.class);
 //		List<Student> studentList = studentMapper.getStudent();
-		List<Student> studentList = studentMapper.getStudent();
+		List<Student> studentList = studentMapper.getStudent2();
 		
 		for(Student e : studentList) {
 			System.out.print(e);

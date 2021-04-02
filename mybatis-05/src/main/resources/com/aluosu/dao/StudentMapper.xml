@@ -10,7 +10,7 @@
 		where s.id=t.id;
 	</select>
 	
-	<resultMap type="Student" id="StudentTeacher">
+	<resultMap type="Student" id="StudentTeacher2">
   		<result property="id" column="sid"/>
   		<result property="name" column="sname"/>
   		<!--association： 对象， collection: 集合-->
