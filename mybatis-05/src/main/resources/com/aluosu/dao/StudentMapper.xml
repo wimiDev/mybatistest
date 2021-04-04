@@ -7,7 +7,7 @@
 	<select id="getStudent2" resultMap = "StudentTeacher2">
 		select s.id sid, s.name sname, t.name tname 
 		from ${DATABASE}.${STUDENT} s,${DATABASE}.${TEACHER} t 
-		where s.id=t.id;
+		where s.tid=t.id;
 	</select>
 	
 	<resultMap type="Student" id="StudentTeacher2">
