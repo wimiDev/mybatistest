@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 属性写在内部文件 -->
+	<!-- 
+	<properties>
+		<property name="username" value="boy-1"/>
+		<property name="pwd" value="84a84-C046c"/>
+		<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="devhost" value="81.70.153.203"/>
+		<property name="DATABASE" value="RAINSTORM"/>
+		<property name="USER" value="user"/>
+	</properties>
+	 -->
+	
+	<properties resource="db.properties"></properties>
+	<typeAliases>
+	  <typeAlias alias="Teacher" type="com.aluosu.pojo.Teacher"/>
+	  <typeAlias alias="Student" type="com.aluosu.pojo.Student"/>
+	</typeAliases>
+	<environments default="development">
+	  <environment id="development">
+	    <transactionManager type="JDBC"/>
+	    <dataSource type="POOLED">
+	      <property name="driver" value="${driver}"/>
+	      <property name="url" value="${url}"/>
+	      <property name="username" value="${username}"/>
+	      <property name="password" value="${pwd}"/>
+	    </dataSource>
+	  </environment>
+	</environments>
+	
+	<mappers>
+	  <mapper resource="com/aluosu/dao/StudentMapper.xml"/>
+	  <mapper resource="com/aluosu/dao/TeacherMapper.xml"/>
+	</mappers>
+	
+</configuration>
